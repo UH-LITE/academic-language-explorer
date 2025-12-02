@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Academic Language Examples Explorer</title>
+  <!-- Tailwind via CDN (simple, no build step) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="bg-slate-100 text-slate-900">
+  <div class="min-h-screen flex flex-col">
+    <header class="bg-white shadow-sm">
+      <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+        <div>
+          <h1 class="text-2xl font-bold tracking-tight">
+            Academic Language Examples Explorer
+          </h1>
+          <p class="text-sm text-slate-500 mt-1">
+            Search and filter authentic examples of academic language, organized by 15 key academic writing functions.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-2 text-xs text-slate-500">
+          <span class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-slate-100 border border-slate-200">
+            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+            45 examples
+          </span>
+          <span class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-slate-100 border border-slate-200">
+            15 language functions
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-1">
+      <div class="max-w-6xl mx-auto px-4 py-6 space-y-6">
+        <!-- Controls -->
+        <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 md:p-5 space-y-4">
+          <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+            <div class="flex-1 space-y-2">
+              <label for="searchInput" class="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                Keyword search
+              </label>
+              <div class="relative">
+                <input
+                  id="searchInput"
+                  type="text"
+                  placeholder="Search for words like “limitations”, “consequently”, “framework”, “EFL students”…"
+                  class="w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                />
+                <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-slate-400">
+                  🔍
+                </div>
+              </div>
+              <p class="text-xs text-slate-500">
+                Search looks through the example sentence, function label, and source information.
+              </p>
+            </div>
+
+            <div class="w-full md:w-72 space-y-2">
+              <label for="functionFilter" class="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                Academic language function
+              </label>
+              <select
+                id="functionFilter"
+                class="w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+              >
+                <option value="all">All functions</option>
+              </select>
+              <p class="text-xs text-slate-500">
+                Filter to see only examples for a specific function (e.g., hedging, limitations, conclusions).
+              </p>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-dashed border-slate-200">
+            <div class="text-xs text-slate-500">
+              <span id="resultsCount" class="font-semibold text-slate-700">45</span> examples shown
+            </div>
+            <div class="flex flex-wrap gap-2 text-[11px] text-slate-500">
+              <span class="px-2 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-100">
+                Tip: Click “Copy” to paste directly into your draft.
+              </span>
+              <span class="px-2 py-1 rounded-full bg-slate-50 border border-slate-200">
+                Use search + function filter together for precise results.
+              </span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Results -->
+        <section id="resultsContainer" class="space-y-3">
+          <!-- Cards rendered by JS -->
+        </section>
+      </div>
+    </main>
+
+    <footer class="border-t border-slate-200 bg-white">
+      <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row gap-2 md:items-center md:justify-between text-xs text-slate-500">
+        <p>
+          Examples adapted from recent peer-reviewed research articles in education and applied linguistics.
+        </p>
+        <p>
+          Designed for students, thesis writers, and instructors who want authentic academic sentence models.
+        </p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const entries = [
+      { id: "1-1", func: "Establishing a research territory", excerpt: "AI-generative tools, such as ChatGPT, are argued to hold the potential to contribute to creative thinking in education broadly and second language education specifically.", source: "Alzubi et al. (2025). Do AI-generative tools kill or nurture creativity in EFL teaching and learning?" },
+      { id: "1-2", func: "Establishing a research territory", excerpt: "A main objective in the language classroom is to spur students to write, as this productive ability confers language benefits such as enhancing students’ reading skills and learning in other subject areas and disciplines.", source: "Woo, Guo, & Salas-Pilco (2024). Writing creative stories with AI: learning designs for secondary school students." },
+      { id: "1-3", func: "Establishing a research territory", excerpt: "Writing is an essential skill by which people can communicate their experiences, feelings, and thoughts in a lasting form.", source: "Woo et al. (2023). Understanding EFL students’ idea generation strategies for creative writing with NLG tools." },
+
+      { id: "2-1", func: "Identifying a topic that needs more research", excerpt: "Furthermore, as this study’s findings are drawn largely from students’ introspective analysis, subsequent research could instead capture data by screen recording students’ interactions with NLG tools and audio recording students’ narration during their interactions.", source: "Woo et al. (2023). Understanding EFL students’ idea generation strategies for creative writing with NLG tools." },
+      { id: "2-2", func: "Identifying a topic that needs more research", excerpt: "Therefore, future research should target the temporal aspects of the problem-solving process in participants with different levels of experience, in addition to measuring the outcomes.", source: "Urban et al. (2024). ChatGPT improves creative problem-solving performance in university students." },
+      { id: "2-3", func: "Identifying a topic that needs more research", excerpt: "Future studies are needed to explore whether the observed improvements are sustained over time.", source: "Kaşkaya & Ateş (2025). The effect of AI-supported visualization applications on students’ writing disposition." },
+
+      { id: "3-1", func: "Stating a research purpose", excerpt: "This review considers the affordances, constraints, and future possibilities of specifications grading, in conversation with related research into its classroom use across several disciplines.", source: "Graves (2023). Specifications grading to promote student engagement, motivation and learning." },
+      { id: "3-2", func: "Stating a research purpose", excerpt: "This study explores strategies adopted by EFL students when searching for ideas using NLG tools, evaluating ideas generated by NLG tools and selecting NLG tools for idea generation.", source: "Woo et al. (2023). Understanding EFL students’ idea generation strategies for creative writing with NLG tools." },
+      { id: "3-3", func: "Stating a research purpose", excerpt: "This study aimed to investigate the effects of artificial intelligence-supported visualization applications on students’ writing disposition during the creative writing process.", source: "Kaşkaya & Ateş (2025). AI-supported visualization applications in the creative writing process." },
+
+      { id: "4-1", func: "Showing use of cautious language (hedging and boosting)", excerpt: "Ultimately, I consider whether specs grading may be flexible enough, despite some potential pitfalls, to lend its strengths to classroom assessment practices.", source: "Graves (2023). Specifications grading to promote student engagement, motivation and learning." },
+      { id: "4-2", func: "Showing use of cautious language (hedging and boosting)", excerpt: "Although these studies can provide insight into idea generation strategies with NLG tools, they may not be applicable to EFL students as novice writers.", source: "Woo et al. (2023). Understanding EFL students’ idea generation strategies for creative writing with NLG tools." },
+      { id: "4-3", func: "Showing use of cautious language (hedging and boosting)", excerpt: "As such, the integration of AI-based visualization tools may serve as a valuable innovation in writing instruction.", source: "Kaşkaya & Ateş (2025). AI-supported visualization applications in the creative writing process." },
+
+      { id: "5-1", func: "Operationally defining concepts, terms, or objects", excerpt: "As defined and promoted most prominently by Nilson (2015), specifications grading features three elements: all assignments are graded pass/fail on the basis of carefully crafted specs, students are allowed limited opportunities to revise or retake tasks, and final course grades are defined by completion of particular sets of assignments.", source: "Graves (2023). Specifications grading to promote student engagement, motivation and learning." },
+      { id: "5-2", func: "Operationally defining concepts, terms, or objects", excerpt: "Clark et al. (2018) proposed a machine-in-the-loop framework, where the human writer is the central actor and an NLG tool plays a supporting role.", source: "Woo et al. (2023). Understanding EFL students’ idea generation strategies for creative writing with NLG tools." },
+      { id: "5-3", func: "Operationally defining concepts, terms, or objects", excerpt: "Semi-structured interviewing is a flexible qualitative data collection method in which the researcher prepares a set of predetermined questions focused on a specific topic but may also pose additional questions based on the direction of the conversation.", source: "Kaşkaya & Ateş (2025). AI-supported visualization applications in the creative writing process." },
+
+      { id: "6-1", func: "Providing examples", excerpt: "Consider, for example, a writing classroom focused on developing critical language or genre awareness, in which students analyze several samples of a target genre in search of patterned conventions.", source: "Graves (2023). Specifications grading to promote student engagement, motivation and learning." },
+      { id: "6-2", func: "Providing examples", excerpt: "For example, Calderwood et al. (2018) explored how professional novelists wrote with NLG tools. These novelists preferred NLG tools to generate briefer ideas, such as to finish a sentence, than to generate a complete paragraph.", source: "Woo et al. (2023). Understanding EFL students’ idea generation strategies for creative writing with NLG tools." },
+      { id: "6-3", func: "Providing examples", excerpt: "For instance, one student commented that using imagination excited them and that visuals helped new ideas form in their mind.", source: "Kaşkaya & Ateş (2025). AI-supported visualization applications in the creative writing process." },
+
+      { id: "7-1", func: "Establishing cause and effect", excerpt: "AI may be the catalyst that forces us to focus on what really counts: to reorient our assessments toward what humans can do better than machines.", source: "Graves (2023). Specifications grading to promote student engagement, motivation and learning." },
+      { id: "7-2", func: "Establishing cause and effect", excerpt: "Our thematic analysis revealed four themes that provide the best synthesis of the patterns found in students’ answers.", source: "Woo et al. (2023). Understanding EFL students’ idea generation strategies for creative writing with NLG tools." },
+      { id: "7-3", func: "Establishing cause and effect", excerpt: "The integration of AI-supported visualization tools fostered a more engaging, structured, and student-centered learning environment.", source: "Kaşkaya & Ateş (2025). AI-supported visualization applications in the creative writing process." },
+
+      { id: "8-1", func: "Describing a thing or process", excerpt: "Specifications grading shares certain features with contract grading, most notably in its tiered grading structure and its effort to minimize grading decisions.", source: "Graves (2023). Specifications grading to promote student engagement, motivation and learning." },
+      { id: "8-2", func: "Describing a thing or process", excerpt: "Students were required to answer reflection questions on the same Google Doc on which they wrote and submitted their short story.", source: "Woo et al. (2023). Understanding EFL students’ idea generation strategies for creative writing with NLG tools." },
+      { id: "8-3", func: "Describing a thing or process", excerpt: "To more clearly determine whether the observed changes were attributable to the AI-supported visualization applications, changes in the control group were also analyzed using a paired samples t-test.", source: "Kaşkaya & Ateş (2025). AI-supported visualization applications in the creative writing process." },
+
+      { id: "9-1", func: "Expressing surprise or counter-expectation", excerpt: "Although students may have had ideas when prompting an NLG tool, their search for story ideas appeared underdeveloped.", source: "Woo et al. (2023). Understanding EFL students’ idea generation strategies for creative writing with NLG tools." },
+      { id: "9-2", func: "Expressing surprise or counter-expectation", excerpt: "Idea aversion: this theme shows some students appeared more averse to novel or transformative ideas than other students.", source: "Woo et al. (2023). Understanding EFL students’ idea generation strategies for creative writing with NLG tools." },
+      { id: "9-3", func: "Expressing surprise or counter-expectation", excerpt: "These concerns about language and the quantity of ideas may be unique to how EFL students approach creative writing with NLG tools.", source: "Woo et al. (2023). Understanding EFL students’ idea generation strategies for creative writing with NLG tools." },
+
+      { id: "10-1", func: "Comparing and contrasting two or more concepts/ideas/things", excerpt: "Specifications grading also shares certain features with contract grading, most notably in its tiered grading structure and the effort to minimize grading decisions.", source: "Graves (2023). Specifications grading to promote student engagement, motivation and learning." },
+      { id: "10-2", func: "Comparing and contrasting two or more concepts/ideas/things", excerpt: "Brown et al.’s NLG tool created full-length articles that some people could not distinguish from human-written articles, and similarly participants in another study could not distinguish between human-made haikus and AI-generated haikus.", source: "Woo et al. (2023). Understanding EFL students’ idea generation strategies for creative writing with NLG tools." },
+      { id: "10-3", func: "Comparing and contrasting two or more concepts/ideas/things", excerpt: "The observed growth in students’ self-efficacy and self-expression echoes earlier findings that emphasize the role of AI in fostering autonomy and self-regulation.", source: "Kaşkaya & Ateş (2025). AI-supported visualization applications in the creative writing process." },
+
+      { id: "11-1", func: "Referencing visuals (charts, diagrams, tables, figures)", excerpt: "Figure 1 shows that the majority of participants are female (63%), while male participants constitute 37%.", source: "El Messaoudi et al. (2025). Student satisfaction with ChatGPT as a writing tool in Moroccan higher education." },
+      { id: "11-2", func: "Referencing visuals (charts, diagrams, tables, figures)", excerpt: "Based on the themes for the three research questions, in Figure 6 we present an enriched conceptual framework of idea generation between a student and NLG tools.", source: "Woo et al. (2023). Understanding EFL students’ idea generation strategies for creative writing with NLG tools." },
+      { id: "11-3", func: "Referencing visuals (charts, diagrams, tables, figures)", excerpt: "The results of this analysis are displayed in Table 2.", source: "Kaşkaya & Ateş (2025). AI-supported visualization applications in the creative writing process." },
+
+      { id: "12-1", func: "Incorporating sources", excerpt: "Nilson (2015) asserts more than a dozen benefits to implementing specifications grading, and many of these claims have been addressed, at least tentatively, by recent studies.", source: "Graves (2023). Specifications grading to promote student engagement, motivation and learning." },
+      { id: "12-2", func: "Incorporating sources", excerpt: "Hitsuwari et al. (2023) found their study’s participants could not distinguish between human-made haikus and AI-generated haikus, and Clark et al. (2018) proposed a machine-in-the-loop framework in which the human writer is the central actor.", source: "Woo et al. (2023). Understanding EFL students’ idea generation strategies for creative writing with NLG tools." },
+      { id: "12-3", func: "Incorporating sources", excerpt: "For the quantitative component of the study, the Writing Disposition Scale developed by İşeri and Ünal (2010) was administered to both groups as a pre-test and post-test.", source: "Kaşkaya & Ateş (2025). AI-supported visualization applications in the creative writing process." },
+
+      { id: "13-1", func: "Signaling transition between paragraphs or links between sentences", excerpt: "Consequently, specifications grading’s structures and assumptions deserve critical, assessment-oriented attention.", source: "Graves (2023). Specifications grading to promote student engagement, motivation and learning." },
+      { id: "13-2", func: "Signaling transition between paragraphs or links between sentences", excerpt: "Thus, the themes found in this study are not exhaustive of all possible themes for idea generation.", source: "Woo et al. (2023). Understanding EFL students’ idea generation strategies for creative writing with NLG tools." },
+      { id: "13-3", func: "Signaling transition between paragraphs or links between sentences", excerpt: "Therefore, while AI-supported visualization tools show great promise in enhancing writing instruction, their implementation should be approached with critical awareness.", source: "Kaşkaya & Ateş (2025). AI-supported visualization applications in the creative writing process." },
+
+      { id: "14-1", func: "Stating limitations and/or making recommendations", excerpt: "A number of limitations with specifications grading deserve mention. First, some studies noted challenges with student buy-in to the system.", source: "Graves (2023). Specifications grading to promote student engagement, motivation and learning." },
+      { id: "14-2", func: "Stating limitations and/or making recommendations", excerpt: "Subsequent research should test this study’s contributions and attempt statistical generalizations, not least with a larger number of EFL students and more rigorous instrumentation.", source: "Woo et al. (2023). Understanding EFL students’ idea generation strategies for creative writing with NLG tools." },
+      { id: "14-3", func: "Stating limitations and/or making recommendations", excerpt: "Despite these promising results, it is important to recognize the potential challenges and limitations associated with the use of AI in educational settings.", source: "Kaşkaya & Ateş (2025). AI-supported visualization applications in the creative writing process." },
+
+      { id: "15-1", func: "Concluding sentence or paragraph to summarize findings", excerpt: "Ultimately, while more research is needed, what task-specific criteria, a pass/fail approach, and an emphasis on assessment processes may offer is a way to balance flexibility and choice with structure and predictability.", source: "Graves (2023). Specifications grading to promote student engagement, motivation and learning." },
+      { id: "15-2", func: "Concluding sentence or paragraph to summarize findings", excerpt: "Although the open-source language models used in this study’s NLG tools are state-of-the-art, large language models are superior at present and we foresee advances in performance for open-source models.", source: "Woo et al. (2023). Understanding EFL students’ idea generation strategies for creative writing with NLG tools." },
+      { id: "15-3", func: "Concluding sentence or paragraph to summarize findings", excerpt: "Future research could expand on this study by implementing larger-scale interventions that would enhance the robustness, applicability, and depth of understanding regarding the role of AI-supported visualization tools in writing education.", source: "Kaşkaya & Ateş (2025). AI-supported visualization applications in the creative writing process." },
+    ];
+
+    function getUniqueFunctions() {
+      const set = new Set(entries.map((e) => e.func));
+      return Array.from(set).sort();
+    }
+
+    function normalize(str) {
+      return str.toLowerCase();
+    }
+
+    function highlight(text, query) {
+      if (!query) return text;
+      const q = query.trim();
+      if (!q) return text;
+      const safe = q.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      const regex = new RegExp("(" + safe + ")", "ig");
+      return text.replace(regex, "<mark class='bg-emerald-100 text-emerald-900 rounded px-0.5'>$1</mark>");
+    }
+
+    function filterEntries(searchValue, funcFilter) {
+      const q = normalize(searchValue || "");
+      const func = funcFilter || "all";
+
+      return entries.filter((e) => {
+        if (func !== "all" && e.func !== func) return false;
+        if (!q) return true;
+        const haystack = normalize(e.excerpt + " " + e.func + " " + e.source);
+        return haystack.includes(q);
+      });
+    }
+
+    function copyToClipboard(text, buttonEl) {
+      if (!navigator.clipboard) {
+        alert("Clipboard not supported in this browser.");
+        return;
+      }
+      navigator.clipboard.writeText(text).then(
+        () => {
+          if (buttonEl) {
+            const original = buttonEl.textContent;
+            buttonEl.textContent = "Copied!";
+            buttonEl.disabled = true;
+            buttonEl.classList.add("bg-emerald-600", "text-white");
+            setTimeout(() => {
+              buttonEl.textContent = original;
+              buttonEl.disabled = false;
+              buttonEl.classList.remove("bg-emerald-600", "text-white");
+            }, 1200);
+          }
+        },
+        () => {
+          alert("Unable to copy text.");
+        }
+      );
+    }
+
+    const searchInput = document.getElementById("searchInput");
+    const functionFilter = document.getElementById("functionFilter");
+    const resultsContainer = document.getElementById("resultsContainer");
+    const resultsCount = document.getElementById("resultsCount");
+
+    getUniqueFunctions().forEach((func) => {
+      const opt = document.createElement("option");
+      opt.value = func;
+      opt.textContent = func;
+      functionFilter.appendChild(opt);
+    });
+
+    function render() {
+      const searchValue = searchInput.value;
+      const funcValue = functionFilter.value;
+      const filtered = filterEntries(searchValue, funcValue);
+
+      resultsCount.textContent = filtered.length.toString();
+      resultsContainer.innerHTML = "";
+
+      if (filtered.length === 0) {
+        const empty = document.createElement("div");
+        empty.className =
+          "bg-white border border-dashed border-slate-200 rounded-2xl p-6 text-center text-sm text-slate-500";
+        empty.innerHTML =
+          "No matching examples. Try removing a filter or searching for a more general term.";
+        resultsContainer.appendChild(empty);
+        return;
+      }
+
+      filtered.forEach((e) => {
+        const card = document.createElement("article");
+        card.className =
+          "bg-white border border-slate-200 rounded-2xl p-4 md:p-5 shadow-sm flex flex-col gap-3";
+
+        const topRow = document.createElement("div");
+        topRow.className = "flex items-start justify-between gap-3";
+
+        const funcBadge = document.createElement("div");
+        funcBadge.className =
+          "inline-flex items-center gap-1 px-2 py-1 rounded-full bg-slate-100 border border-slate-200 text-[11px] font-medium text-slate-700";
+        funcBadge.textContent = e.func;
+
+        const copyBtn = document.createElement("button");
+        copyBtn.type = "button";
+        copyBtn.className =
+          "text-[11px] px-2 py-1 rounded-full border border-emerald-200 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 transition";
+        copyBtn.textContent = "Copy example";
+        copyBtn.addEventListener("click", () => copyToClipboard(e.excerpt, copyBtn));
+
+        topRow.appendChild(funcBadge);
+        topRow.appendChild(copyBtn);
+
+        const excerpt = document.createElement("p");
+        excerpt.className = "text-sm leading-relaxed";
+        excerpt.innerHTML = "“" + highlight(e.excerpt, searchValue) + "”";
+
+        const source = document.createElement("p");
+        source.className = "text-xs text-slate-500";
+        source.textContent = e.source;
+
+        card.appendChild(topRow);
+        card.appendChild(excerpt);
+        card.appendChild(source);
+
+        resultsContainer.appendChild(card);
+      });
+    }
+
+    render();
+
+    searchInput.addEventListener("input", render);
+    functionFilter.addEventListener("change", render);
+  </script>
+</body>
+</html>
